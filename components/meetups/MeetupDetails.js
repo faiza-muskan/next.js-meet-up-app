@@ -3,14 +3,12 @@ import classes from "./MeetupDetails.module.css";
 const MeetupDetails = (props) => {
   return (
     <section className={classes.detail}>
-      {props.meetupData.map((meetup) => (
-        <>
-          <img src={meetup.image} alt={meetup.title} />
-          <h1>{meetup.title}</h1>
-          <address>{meetup.address}</address>
-          <p>{meetup.description}</p>
-        </>
-      ))}
+      <>
+        <img src={props.image} alt={props.title} />
+        <h1>{props.title}</h1>
+        <address>{props.address}</address>
+        <p>{props.description}</p>
+      </>
     </section>
   );
 };

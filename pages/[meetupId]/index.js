@@ -20,6 +20,7 @@ const meetupDetails = (props) => {
 };
 
 export const getStaticPaths = async () => {
+  console.log("getStaticPaths");
   const client = await MongoClient.connect(
     "mongodb+srv://faiza:SdLM%405ZNgniFbwG@cluster0.lnlp98m.mongodb.net/meetups?retryWrites=true&w=majority"
   );
@@ -32,6 +33,8 @@ export const getStaticPaths = async () => {
 
   client.close();
 
+  console.log("getStaticPaths end");
+
   return {
     fallback: false,
     paths: selectedMeetup.map((meetup) => ({
@@ -42,9 +45,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const meetupId = context.params.meetupId;
+  console.log("getStaticProps start");
   const client = await MongoClient.connect(
     "mongodb+srv://faiza:SdLM%405ZNgniFbwG@cluster0.lnlp98m.mongodb.net/meetups?retryWrites=true&w=majority"
   );
+
+  console.log("getStaticProps connection");
 
   const db = client.db();
 
